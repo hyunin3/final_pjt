@@ -1,0 +1,2 @@
+cd front-server
+cd back-server

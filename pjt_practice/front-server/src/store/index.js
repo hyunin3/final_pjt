@@ -22,6 +22,9 @@ export default new Vuex.Store({
   getters: {
     isLogin(state) {
       return state.token ? true : false
+    },
+    loggedIn(state) {
+      return !!state.user;
     }
   },
   mutations: {
@@ -32,6 +35,11 @@ export default new Vuex.Store({
     SAVE_TOKEN(state, token) {
       state.token = token
       router.push({name : 'ArticleView'}) // store/index.js $router 접근 불가 -> import를 해야함
+    },
+    LOGOUT(state) {
+      state.user=null
+      localStorage.removeItem('user')
+      location.reload()
     }
   },
   actions: {
@@ -88,7 +96,10 @@ export default new Vuex.Store({
       .catch((err) => {
         console.log(err)
       })
-    }
+    },
+    logout({commit}) {
+      commit('LOGOUT')
+    },
   },
   modules: {
   }

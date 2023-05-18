@@ -9,8 +9,10 @@
       </nav>
 
       <nav>
-        <router-link :to="{ name: 'SignUpView' }">회원가입</router-link> |
-        <router-link :to="{ name: 'LogInView' }">로그인</router-link>
+        <app-nav />
+        <router-view class="page" />
+        <!-- <router-link :to="{ name: 'SignUpView' }">회원가입</router-link> |
+        <router-link :to="{ name: 'LogInView' }">로그인</router-link> -->
       </nav>
     </div>
 
@@ -18,7 +20,12 @@
 
   </div>
 </template>
-
+<script>
+import AppNav from "./components/AppNav"
+export default {
+  components: { AppNav }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

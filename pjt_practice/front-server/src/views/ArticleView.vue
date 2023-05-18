@@ -4,11 +4,24 @@
     <router-link :to="{ name: 'QuizView' }">[Let's QUIZ!]</router-link>
     <ArticleList />
     <hr>
+
+     <div v-if="!loggedIn">
+      To use this app you'll need to
+      <router-link to="/login">
+        Login
+      </router-link>
+      or
+      <router-link to="/register">
+        Register
+      </router-link>
+      </div>
+      
   </div>
 </template>
 
 <script>
 import ArticleList from '@/components/ArticleList.vue'
+import { authComputed } from '../store/helpers.js'
 
 export default {
   name: 'ArticleView',
@@ -18,7 +31,8 @@ export default {
   computed:{
     isLogin() {
       return this.$store.getters.isLogin // 로그인 여부
-    }
+    },
+     ...authComputed
   },
   created() {
     this.getArticles()
