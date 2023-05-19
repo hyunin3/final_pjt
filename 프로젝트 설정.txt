@@ -19,6 +19,7 @@ pip install django-cors-headers
 pip install dj-rest-auth
 pip install 'dj-rest-auth[with_social]'
 하고 해야됨
+pip freeze > requirements.txt
 
 vue 관련
 
@@ -29,6 +30,10 @@ npm run serve
 cd back-server
 cd front-server
 
+cd back-server
+cd front-server
+
+python manage.py migrate
 python manage.py runserver
 
 npm run serve

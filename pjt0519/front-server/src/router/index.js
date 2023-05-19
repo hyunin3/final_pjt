@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import ArticleView from '@/views/ArticleView'
 import MoviesView from '@/views/MoviesView'
+import MovieDetailView from '@/views/MovieDetailView'
 import QuizView from '@/views/QuizView'
 import RecommendView from '@/views/RecommendView'
 import TicketView from '@/views/TicketView'
@@ -24,6 +25,12 @@ const routes = [
     path: '/movies',
     name: 'MoviesView',
     component: MoviesView
+  },
+
+  {
+    path: '/movie/:id',
+    name: 'MovieDetailView',
+    component: MovieDetailView 
   },
  
   {
@@ -63,6 +70,7 @@ const routes = [
     component: LogInView
   },
 
+  // 게시글 id
   {
     path: '/:id',
     name: 'DetailView',

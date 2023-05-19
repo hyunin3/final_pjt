@@ -4,7 +4,9 @@
       <carousel :perPage="7" :navigationEnabled="true" :paginationEnabled="false" :loop="true">
         <slide v-for="movie in movies" :key="movie.id">
           <div class="card mb-2">
-            <img class="card-img-top" :src="getImgUrl(movie)" alt="Card image cap">
+            <router-link :to="`/movie/${movie.id}`">
+              <img class="card-img-top" :src="getImgUrl(movie)" alt="Movie Poster">
+            </router-link>
           </div>
         </slide>
       </carousel>
@@ -17,7 +19,7 @@ import axios from 'axios';
 import { Carousel, Slide } from 'vue-carousel';
 
 const API_KEY = 'db499efb2cc0ba6f9698b4699f1b762e';
-const UPCOMING_URL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=ko-KR&page=1`
+const NOW_PLAYING_URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=ko-KR`;
 
 export default {
   name: 'MoviesView',
@@ -31,13 +33,13 @@ export default {
     };
   },
   created() {
-    this.getUpcomingMovies()
+    this.getNowPlayingMovies()
   },
   methods: {
-    getUpcomingMovies() {
+    getNowPlayingMovies() {
       axios({
         method: 'get',
-        url: UPCOMING_URL,
+        url: NOW_PLAYING_URL,
       })
         .then((response) => {
           const moviesData = response.data.results;

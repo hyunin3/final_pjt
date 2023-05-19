@@ -4,7 +4,9 @@
       <carousel :perPage="7" :navigationEnabled="true" :paginationEnabled="false" :loop="true">
         <slide v-for="movie in movies" :key="movie.id">
           <div class="card mb-2">
-            <img class="card-img-top" :src="getImgUrl(movie)" alt="Card image cap">
+            <router-link :to="`/movie/${movie.id}`">
+              <img class="card-img-top" :src="getImgUrl(movie)" alt="Movie Poster">
+            </router-link>
           </div>
         </slide>
       </carousel>

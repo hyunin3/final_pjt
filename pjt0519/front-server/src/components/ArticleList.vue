@@ -5,9 +5,6 @@
     v-for="article in articles" :key="article.id" :article="article"
     />
   </div>
-
-
-  
 </template>
 
 <script>
