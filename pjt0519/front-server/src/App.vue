@@ -28,11 +28,7 @@ export default {
     logout() {
       this.$store.dispatch("logout") // 로그아웃
     },
-    // isLoggedin() {
-    //   // 로그인 상태를 확인하는 로직
-    //   // 예: 로컬 스토리지에 토큰이 저장되어 있는지 확인
-    //   return !!localStorage.getItem('token');
-    // }
+   
     
   },
   computed:{

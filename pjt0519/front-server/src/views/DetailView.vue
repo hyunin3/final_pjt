@@ -18,7 +18,12 @@
         <li>코멘트1</li>
       </ul>
     </div> -->
-
+  <div>
+    <button @click="likePost">
+      {{ liked ? 'Unlike' : 'Like' }} Post
+    </button>
+    <p>Total Likes: {{ totalLikes }}</p>
+  </div>
 
 <form @submit.prevent="createArticle">
       <label for="content">댓글 : </label>
@@ -38,7 +43,10 @@ export default {
   name: 'DetailView',
   data() {
     return {
-      article: null
+      article: null,
+      liked: false,
+      totalLikes: 0,
+      content: null,
     }
   },
   created() {
@@ -63,7 +71,7 @@ export default {
 
       axios({
         method: 'post',
-        url: `${API_URL}/api/v1/articles/`,
+        url: `${API_URL}/api/v1/comments/`,
         data: { content},
         headers: {
           Authorization: `Token ${this.$store.state.token}`
@@ -71,12 +79,17 @@ export default {
       })
       .then(() => {
         // console.log(res)
-        this.$router.push({name: 'ArticleView'})
+        this.$router.push({name: 'DetailView'})
       })
       .catch((err) => {
         console.log(err)
       })
-    }
+    },
+    likePost() {
+      this.liked = !this.liked
+      this.totalLikes = this.liked ? this.totalLikes + 1 : this.totalLikes - 1
+    },
+
   }
 }
 </script>

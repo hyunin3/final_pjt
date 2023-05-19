@@ -7,6 +7,14 @@
     <h4>관람평 수 : {{ movie?.vote_count }}</h4>
     <h4>장르 : {{ movie?.genres }}</h4>
     <h4>런타임 : {{ movie?.runtime }}</h4>
+
+  <div>
+    <button @click="likePost">
+      {{ liked ? 'Unlike' : 'Like' }} Post
+    </button>
+    <p>Total Likes: {{ totalLikes }}</p>
+  </div>
+
   </div>
 </template>
 
@@ -19,6 +27,8 @@ export default {
   data() {
     return {
       movie: null,
+      liked: false,
+      totalLikes: 0,
     };
   },
   created() {
@@ -36,7 +46,26 @@ export default {
       .then((response) => {
         this.movie = response.data
       })
-    }
+    },
+    // likePost() {
+    // this.liked = !this.liked
+    // this.totalLikes = this.liked ? this.totalLikes + 1 : this.totalLikes - 1
+    // },
+    async likePost() {
+      try {
+        if (!this.liked) {
+          const response = await axios.post('/api/like/', { post_id: this.postId });
+          this.liked = true;
+          this.totalLikes += 1;
+        } else {
+          const response = await axios.delete(`/api/like/${this.postId}/`);
+          this.liked = false;
+          this.totalLikes -= 1;
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    },
   }
 };
 </script>
