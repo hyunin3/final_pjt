@@ -11,7 +11,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializers import ArticleListSerializer, ArticleSerializer, CommentSerializer
-from .models import Article, Comment
+from .models import Article, Comment, Like
+from rest_framework.views import APIView
 
 
 
@@ -92,3 +93,51 @@ def comment_create(request, article_pk):
     if serializer.is_valid(raise_exception=True):
         serializer.save(article=article)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+@api_view(['GET','POST'])
+def comment_list(request, article_pk):
+    article = get_object_or_404(Article, pk=article_pk)
+
+    if request.method == 'POST':
+        serializer = CommentSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save(article=article)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+    elif request.method == 'GET':
+        comments = article.comment_set.all()
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data)
+
+
+
+@api_view(['GET'])
+def comment_detail(request, comment_pk):
+    if request.method == 'GET':
+        comment = Comment.objects.get(pk=comment_pk)
+        serializer = CommentSerializer(comment)
+        return Response(serializer.data)
+    
+class LikeAPIView(APIView):
+    def post(self, request):
+        article_id = request.data.get('post_id')
+        article = Article.objects.get(id=article_id)
+
+        # ... perform checks, e.g. if user already liked ...
+
+        Like.objects.create(user=request.user, article=article)
+        article.total_likes += 1
+        article.save()
+
+        return Response(status=status.HTTP_201_CREATED)
+
+    def delete(self, request, post_id):
+        article = Article.objects.get(id=post_id)
+
+        # ... perform checks, e.g. if user never liked ...
+
+        Like.objects.filter(user=request.user, article=article).delete()
+        article.total_likes -= 1
+        article.save()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)    

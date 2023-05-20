@@ -29,10 +29,12 @@ export default {
       movie: null,
       liked: false,
       totalLikes: 0,
+      postId: this.$route.params.id,
     };
   },
   created() {
     this.getMovieDetail()
+    // this.getLikeStatusAndCount()
   },
   methods: {
     getMovieDetail() {
@@ -47,25 +49,40 @@ export default {
         this.movie = response.data
       })
     },
-    // likePost() {
-    // this.liked = !this.liked
-    // this.totalLikes = this.liked ? this.totalLikes + 1 : this.totalLikes - 1
+    //  getLikeStatusAndCount() {
+    //   axios.get(`/api/like/${this.postId}/`)
+    //     .then(response => {
+    //       this.liked = response.data.liked;
+    //       this.totalLikes = response.data.total_likes;
+    //     })
+    //     .catch(error => {
+    //       console.error(error);
+    //     });
     // },
-    async likePost() {
-      try {
-        if (!this.liked) {
-          const response = await axios.post('/api/like/', { post_id: this.postId });
-          this.liked = true;
-          this.totalLikes += 1;
-        } else {
-          const response = await axios.delete(`/api/like/${this.postId}/`);
-          this.liked = false;
-          this.totalLikes -= 1;
-        }
-      } catch (error) {
-        console.error(error);
-      }
+    // likePost() {
+    //   if (!this.liked) {
+    //     axios.post(`/api/like/`, { post_id: this.postId })
+    //       .then(() => {
+    //         this.liked = true;
+    //         this.totalLikes += 1;
+    //       })
+    //       .catch(error => {
+    //         console.error(error);
+    //       });
+    //   } else {
+    //     axios.delete(`/api/like/${this.postId}/`)
+    //       .then(() => {
+    //         this.liked = false;
+    //         this.totalLikes -= 1;
+    //       })
+    //       .catch(error => {
+    //         console.error(error);
+    //       });
+    likePost() {
+    this.liked = !this.liked
+    this.totalLikes = this.liked ? this.totalLikes + 1 : this.totalLikes - 1
     },
+    
   }
-};
+}
 </script>

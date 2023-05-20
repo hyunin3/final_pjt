@@ -25,11 +25,19 @@
     <p>Total Likes: {{ totalLikes }}</p>
   </div>
 
-<form @submit.prevent="createArticle">
+<!-- <form @submit.prevent="createArticle">
       <label for="content">댓글 : </label>
       <textarea id="content" cols="30" rows="10" v-model="content"></textarea><br>
       <input type="submit" id="submit">
-    </form>
+    </form> -->
+    <div v-for="comment in comments" :key="comment.id">
+      <p>{{ comment.content }}</p>
+    </div>
+    
+    <div>
+      <input v-model="commentContent" type="text" placeholder="Write a comment..." />
+      <button @click="writeComment">Submit</button>
+    </div>
 
 
   </div>
@@ -46,12 +54,14 @@ export default {
       article: null,
       liked: false,
       totalLikes: 0,
-      content: null,
+      commentContent: '',
+      comments: [],
     }
   },
-  created() {
-    this.getArticleDetail()
-  },
+  // created() {
+  //   this.getArticleDetail()
+  // },
+  
   methods: {
     getArticleDetail() {
       axios({
@@ -66,30 +76,52 @@ export default {
         console.log(err)
       })
     },
-    createComments() {
-      const content = this.content
+    
+    // likePost() {
+    //   this.liked = !this.liked
+    //   this.totalLikes = this.liked ? this.totalLikes + 1 : this.totalLikes - 1
+    // },
 
-      axios({
-        method: 'post',
-        url: `${API_URL}/api/v1/comments/`,
-        data: { content},
-        headers: {
-          Authorization: `Token ${this.$store.state.token}`
-        }
-      })
-      .then(() => {
-        // console.log(res)
-        this.$router.push({name: 'DetailView'})
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-    },
-    likePost() {
-      this.liked = !this.liked
-      this.totalLikes = this.liked ? this.totalLikes + 1 : this.totalLikes - 1
-    },
+  //  async writeComment() {
+  //     try {
+  //       const response = await axios.post(`${API_URL}/api/v1/comments/`, {
+  //         article: this.article.id,
+  //         content: this.commentContent,
+  //       });
+  //       this.comments.push(response.data);
+  //       this.commentContent = '';
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   },
+  // async likePost() {
+  //     try {
+  //       if (!this.liked) {
+  //           await axios.post(`${API_URL}/api/v1/likes/`, {
+  //           article: this.article.id,
+  //         });
+  //         this.liked = true;
+  //         this.totalLikes += 1;
+  //       } else {
+  //         await axios.delete(`${API_URL}/api/v1/likes/${this.article.id}/`);
+  //         this.liked = false;
+  //         this.totalLikes -= 1;
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   },
+  //   async created() {
+  //   this.getArticleDetail()
+  //   try {
+  //     const response = await axios.get(`${API_URL}/api/v1/articles/${this.article.id}/`);
+  //     this.comments = response.data.comment_set;
+  //   } catch (error) {
+  //     // 에러 처리
+  //     console.error(error);
+  //   }
+  // },
 
-  }
+}
 }
 </script>
