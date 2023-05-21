@@ -5,7 +5,7 @@
         <slide v-for="movie in movies" :key="movie.id">
           <div class="card mb-2">
             <router-link :to="`/movie/${movie.id}`">
-              <img class="card-img-top" :src="getImgUrl(movie)" alt="Movie Poster">
+              <img class="card-img-top hover-zoom" :src="getImgUrl(movie)" alt="Movie Poster">
             </router-link>
           </div>
         </slide>
@@ -19,7 +19,7 @@ import axios from 'axios';
 import { Carousel, Slide } from 'vue-carousel';
 
 const API_KEY = 'db499efb2cc0ba6f9698b4699f1b762e';
-const NOW_PLAYING_URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=ko-KR`;
+const POPULAR_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=ko-KR&page=1`
 
 export default {
   name: 'MoviesView',
@@ -33,13 +33,13 @@ export default {
     };
   },
   created() {
-    this.getNowPlayingMovies()
+    this.getPopularMovies()
   },
   methods: {
-    getNowPlayingMovies() {
+    getPopularMovies() {
       axios({
         method: 'get',
-        url: NOW_PLAYING_URL,
+        url: POPULAR_URL,
       })
         .then((response) => {
           const moviesData = response.data.results;
@@ -60,21 +60,11 @@ export default {
   width: 100%;
   object-fit: cover;
 }
-.card-img-top {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-.VueCarousel-navigation-button,
-.VueCarousel-navigation-next,
-.VueCarousel-navigation-prev {
-  color: red !important;
+.hover-zoom {
+  transition: transform 0.3s ease-in-out;
 }
 
-.VueCarousel-navigation-next:hover,
-.VueCarousel-navigation-prev:hover {
-  color: darkred
+.hover-zoom:hover {
+  transform: scale(1.4);
 }
-
-
 </style>

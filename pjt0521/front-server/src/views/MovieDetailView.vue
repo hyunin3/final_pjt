@@ -1,12 +1,14 @@
 <template>
   <div>
-    <h4>제목 : {{ movie?.title }}</h4>
-    <h4>줄거리 : {{ movie?.overview }}</h4>
-    <h4>개봉일 : {{ movie?.release_date }}</h4>
-    <h4>평점 : {{ movie?.vote_average }}</h4>
-    <h4>관람평 수 : {{ movie?.vote_count }}</h4>
-    <h4>장르 : {{ movie?.genres }}</h4>
-    <h4>런타임 : {{ movie?.runtime }}</h4>
+    <b-card title="Movie Details" class="mb-2 text-muted">
+      <h4 class="mb-2">제목 : {{ movie?.title }}</h4>
+      <h4 class="mb-2">줄거리 : {{ movie?.overview }}</h4>
+      <h4 class="mb-2">개봉일 : {{ movie?.release_date }}</h4>
+      <h4 class="mb-2">평점 : {{ movie?.vote_average }}</h4>
+      <h4 class="mb-2">관람평 수 : {{ movie?.vote_count }}</h4>
+      <h4 class="mb-2">장르 : {{ movie?.genres }}</h4>
+      <h4 class="mb-2">런타임 : {{ movie?.runtime }}</h4>
+    </b-card>
 
   <div>
     <button @click="likePost">

@@ -5,7 +5,7 @@
         <slide v-for="movie in movies" :key="movie.id">
           <div class="card mb-2">
             <router-link :to="`/movie/${movie.id}`">
-              <img class="card-img-top" :src="getImgUrl(movie)" alt="Movie Poster">
+              <img class="card-img-top hover-zoom" :src="getImgUrl(movie)" alt="Movie Poster">
             </router-link>
           </div>
         </slide>
@@ -60,5 +60,11 @@ export default {
   width: 100%;
   object-fit: cover;
 }
+.hover-zoom {
+  transition: transform 0.3s ease-in-out;
+}
 
+.hover-zoom:hover {
+  transform: scale(1.4);
+}
 </style>

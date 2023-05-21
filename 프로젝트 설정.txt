@@ -6,13 +6,12 @@ source ./venv/Scripts/activate  #가상환경 활성화
 
 pip install -r requirements.txt
 
-cd my_pjt  #프로젝트가 있는 폴더로 이동 (ls로 이동이나 실행 가능한 폴더 파일 확인)
+python manage.py startapp movies
 
 python manage.py runserver  #서버 실행
 
 
 가상환경 활성화되어 있으면 서버실행
-
 
 추가 설치
 pip install django-cors-headers
