@@ -42,7 +42,8 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Nanum Gothic', monospace;
+  min-height: 1000px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -53,6 +54,7 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 30px;
+  font-family: 'Jua', sans-serif;
 }
 
 nav {
@@ -66,5 +68,21 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+#image{
+  width: max-content
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+#jumbo{
+  color:black;
+  background-color: darkgrey;
+  height: 280px;
+  font-family: 'Jua', sans-serif;
+  margin-bottom: 2px
 }
 </style>

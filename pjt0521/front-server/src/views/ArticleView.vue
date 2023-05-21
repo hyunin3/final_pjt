@@ -2,6 +2,7 @@
   <div>
     <h1>HOME Article Page</h1>
     <router-link :to="{ name: 'CreateView' }">[CREATE]</router-link>
+    <img height="60%" :src="seaImage" alt="Sea Image" id="bgimage">
     <ArticleList />
     <hr>
   </div>
@@ -34,6 +35,11 @@ export default {
 
       // 로그인이 되어 있으면 getArticles action 실행
       // 로그인 X라면 login 페이지로 이동
+    }
+  },
+  data() {
+    return {
+      seaImage: require('@/assets/sea.png')
     }
   }
 }
