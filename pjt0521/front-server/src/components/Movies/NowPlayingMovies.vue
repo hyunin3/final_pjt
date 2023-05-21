@@ -19,7 +19,7 @@ import axios from 'axios';
 import { Carousel, Slide } from 'vue-carousel';
 
 const API_KEY = 'db499efb2cc0ba6f9698b4699f1b762e';
-const POPULAR_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=ko-KR&page=1`
+const NOW_PLAYING_URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=ko-KR`;
 
 export default {
   name: 'MoviesView',
@@ -33,13 +33,13 @@ export default {
     };
   },
   created() {
-    this.getPopularMovies()
+    this.getNowPlayingMovies()
   },
   methods: {
-    getPopularMovies() {
+    getNowPlayingMovies() {
       axios({
         method: 'get',
-        url: POPULAR_URL,
+        url: NOW_PLAYING_URL,
       })
         .then((response) => {
           const moviesData = response.data.results;
@@ -60,6 +60,21 @@ export default {
   width: 100%;
   object-fit: cover;
 }
+.card-img-top {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.VueCarousel-navigation-button,
+.VueCarousel-navigation-next,
+.VueCarousel-navigation-prev {
+  color: red !important;
+}
+
+.VueCarousel-navigation-next:hover,
+.VueCarousel-navigation-prev:hover {
+  color: darkred
+}
 .hover-zoom {
   transition: transform 0.3s ease-in-out;
 }
@@ -67,4 +82,5 @@ export default {
 .hover-zoom:hover {
   transform: scale(1.4);
 }
+
 </style>
