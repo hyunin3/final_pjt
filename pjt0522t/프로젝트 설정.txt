@@ -38,3 +38,5 @@ python manage.py migrate
 python manage.py runserver
 
 npm run serve
+
+python manage.py loaddata movies/movie_data.json
