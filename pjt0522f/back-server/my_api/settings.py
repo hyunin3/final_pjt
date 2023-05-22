@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     # Django Apps
     'accounts',
     'articles',
+    'likes',
+    'movies',
 
     'rest_framework',
 

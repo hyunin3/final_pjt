@@ -10,6 +10,8 @@ import CreateView from '@/views/CreateView'
 import DetailView from '@/views/DetailView'
 import SignUpView from '@/views/SignUpView'
 import LogInView from '@/views/LogInView'
+import SuccessQuiz from '@/components/SuccessQuiz.vue'
+import FailureQuiz from '@/components/FailureQuiz.vue'
 
 
 Vue.use(VueRouter)
@@ -75,6 +77,17 @@ const routes = [
     path: '/:id',
     name: 'DetailView',
     component: DetailView,
+  },
+  // 퀴즈 결과에 따른 라우터
+  {
+    path: '/success',
+    name: 'SuccessQuiz',
+    component: SuccessQuiz,
+  },
+  {
+    path: '/failure',
+    name: 'FailureQuiz',
+    component: FailureQuiz,
   },
 
 ]

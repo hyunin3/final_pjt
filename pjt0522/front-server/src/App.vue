@@ -1,7 +1,7 @@
 <template>
   <b-container id="app" class="background">
     <b-navbar id="navbar" toggleable="lg" type="dark" variant="dark">
-      <b-navbar-brand href="#">My App</b-navbar-brand>
+      <b-navbar-brand href="#">MOON</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>

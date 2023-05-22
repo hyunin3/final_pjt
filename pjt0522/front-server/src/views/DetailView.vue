@@ -18,12 +18,12 @@
         <li>코멘트1</li>
       </ul>
     </div> -->
-  <div>
+  <!-- <div>
     <button @click="likePost">
       {{ liked ? 'Unlike' : 'Like' }} Post
     </button>
     <p>Total Likes: {{ totalLikes }}</p>
-  </div>
+  </div> -->
 
 <!-- <form @submit.prevent="createArticle">
       <label for="content">댓글 : </label>

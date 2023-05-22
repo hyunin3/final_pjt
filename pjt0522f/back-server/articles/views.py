@@ -11,9 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializers import ArticleListSerializer, ArticleSerializer, CommentSerializer
-from .models import Article, Comment, Like
-from rest_framework.views import APIView
-
+from .models import Article, Comment
 
 
 @api_view(['GET', 'POST'])
@@ -118,26 +116,3 @@ def comment_detail(request, comment_pk):
         serializer = CommentSerializer(comment)
         return Response(serializer.data)
     
-class LikeAPIView(APIView):
-    def post(self, request):
-        article_id = request.data.get('post_id')
-        article = Article.objects.get(id=article_id)
-
-        # ... perform checks, e.g. if user already liked ...
-
-        Like.objects.create(user=request.user, article=article)
-        article.total_likes += 1
-        article.save()
-
-        return Response(status=status.HTTP_201_CREATED)
-
-    def delete(self, request, post_id):
-        article = Article.objects.get(id=post_id)
-
-        # ... perform checks, e.g. if user never liked ...
-
-        Like.objects.filter(user=request.user, article=article).delete()
-        article.total_likes -= 1
-        article.save()
-
-        return Response(status=status.HTTP_204_NO_CONTENT)    

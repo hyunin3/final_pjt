@@ -18,7 +18,6 @@ export default new Vuex.Store({
     articles: [
     ],
     token: null,
-    user: {},
   },
   getters: {
     isLogin(state) {
@@ -33,9 +32,6 @@ export default new Vuex.Store({
     SAVE_TOKEN(state, token) {
       state.token = token
       router.push({name : 'ArticleView'}) // store/index.js $router 접근 불가 -> import를 해야함
-    },
-    SAVE_USER(state, user) {
-      state.user = user;  // Vuex store에 사용자 정보를 저장합니다.
     },
     DELETE_TOKEN(state){
       state.token = null
@@ -93,8 +89,7 @@ export default new Vuex.Store({
         }
       })
       .then((res) => {
-        context.commit('SAVE_TOKEN', res.data.key);
-        context.commit('SAVE_USER', res.data.user);
+        context.commit('SAVE_TOKEN', res.data.key)
       })
       .catch((err) => {
         console.log(err)

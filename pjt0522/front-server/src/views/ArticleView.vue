@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>HOME Article Page</h1>
+    <h1>HOME</h1>
     <router-link :to="{ name: 'CreateView' }">[CREATE]</router-link>
     <img height="60%" :src="seaImage" alt="Sea Image" id="bgimage">
     <ArticleList />
