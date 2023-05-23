@@ -20,7 +20,7 @@
     <b-card title="댓글 목록" class="mb-2 black">
     <div v-for="comment in comments" :key="comment.id">
       <b-card title="Comment" class="mb-2">
-        <p class="mb-2">작성자: {{ comment.user.username }}</p>
+        <p class="mb-2">작성자: {{ comment.user.username }}</p> 
         <p class="mb-2">내용: {{ comment.content }}</p>
         <p class="mb-2">작성일: {{ comment.created_at }}</p>
       </b-card> 
@@ -80,8 +80,8 @@ export default {
       const payload = {
         movie_id: movieId,
         content: this.commentContent,
-        // movie: this.movie, 장고에서 끼워서 보내줘야될듯
-        // user: this.request.user,
+        movie: this.movie.movie_id, //이건 왜 중복 키값이 아니지? 
+        user: 1, //id값 어떻게 pk로 줄 지 생각해보자...아무 수나 넣어도 되네
       };
 
       axios.post(`http://localhost:8000/movies/${movieId}/create_comment/`, payload, { headers: {
