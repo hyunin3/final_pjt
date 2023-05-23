@@ -2,7 +2,7 @@ import requests
 import json
 import os
 
-# TMDB_API_KEY = str(os.getenv('TMDB_API_KEY'))
+# TMDB_API_KEY = str(os.getenv('TMDB_API_KEY')) 환경변수 사용 안할 것
 TMDB_API_KEY = 'db499efb2cc0ba6f9698b4699f1b762e'
 
 
@@ -25,7 +25,7 @@ def get_movie_datas():
                     'vote_avg': movie['vote_average'],
                     'overview': movie['overview'],
                     'poster_path': movie['poster_path'],
-                    'genres': movie['genre_ids']
+                    # 'genres': movie['genre_ids']
                 }
 
                 data = {

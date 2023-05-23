@@ -17,4 +17,4 @@ class SignupView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# 로그인 뷰에 대해서는 django-rest-framework-simplejwt 라이브러리를 활용하거나 custom 로그인 뷰를 구현해야 할 수 있습니다.
+

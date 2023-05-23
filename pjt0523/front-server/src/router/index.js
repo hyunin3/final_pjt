@@ -12,6 +12,7 @@ import SignUpView from '@/views/SignUpView'
 import LogInView from '@/views/LogInView'
 import SuccessQuiz from '@/components/SuccessQuiz.vue'
 import FailureQuiz from '@/components/FailureQuiz.vue'
+import RecommendDetailView  from '@/components/Movies/RecommendDetailView.vue'
 
 
 Vue.use(VueRouter)
@@ -88,6 +89,12 @@ const routes = [
     path: '/failure',
     name: 'FailureQuiz',
     component: FailureQuiz,
+  },
+  // 추천 페이지 개별 영화 이동
+  {
+    path: '/recommend/:id',
+    name: 'RecommendDetailView',
+    component: RecommendDetailView 
   },
 
 ]
