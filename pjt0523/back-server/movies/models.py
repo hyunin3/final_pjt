@@ -1,9 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-# class Genre(models.Model):
-#     genre_id = models.IntegerField(unique=True)
-#     name = models.CharField(max_length=100)
 
 class Movie(models.Model):
     movie_id = models.IntegerField(unique=True)
@@ -13,7 +10,6 @@ class Movie(models.Model):
     vote_avg = models.FloatField()
     overview = models.TextField()
     poster_path = models.CharField(max_length=200)
-    # genres = models.ManyToManyField(Genre, blank=True, related_name='movie')
 
     def __str__(self):
         return self.title

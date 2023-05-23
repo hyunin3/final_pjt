@@ -72,6 +72,7 @@ export default new Vuex.Store({
         // console.log(res)
         // context.commit
         context.commit('SAVE_TOKEN', res.data.key)
+        alert('회원가입이 완료되었습니다!')
       })
       .catch((err) => {
         console.log(err)
@@ -90,6 +91,7 @@ export default new Vuex.Store({
       })
       .then((res) => {
         context.commit('SAVE_TOKEN', res.data.key)
+        alert('성공적으로 로그인되었습니다!')
       })
       .catch((err) => {
         console.log(err)
@@ -98,6 +100,7 @@ export default new Vuex.Store({
      logout(){
       this.commit("DELETE_TOKEN")
       // commit("DELETE_TOKEN") 로그아웃 구현입니다.
+      alert('성공적으로 로그아웃되었습니다!')
     },
   },
   modules: {
