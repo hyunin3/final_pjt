@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
 import axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
 import router from '../router'
@@ -18,10 +17,15 @@ export default new Vuex.Store({
     articles: [
     ],
     token: null,
+    profile: {}
   },
   getters: {
     isLogin(state) {
       return state.token ? true : false
+    },
+     // 프로필 정보 반환
+    profile(state) {
+      return state.profile
     }
   },
   mutations: {
@@ -33,11 +37,15 @@ export default new Vuex.Store({
       state.token = token
       router.push({name : 'ArticleView'}) // store/index.js $router 접근 불가 -> import를 해야함
     },
+    // 로그아웃 관련된 내용
     DELETE_TOKEN(state){
       state.token = null
       location.reload()
     },
-    // 로그아웃 관련된 내용입니다
+    // 프로필 관련 내용
+    SET_PROFILE(state, profile) {
+      state.profile = profile
+    },
   },
   actions: {
     getArticles(context) {
@@ -69,8 +77,6 @@ export default new Vuex.Store({
         }
       })
       .then((res) => {
-        // console.log(res)
-        // context.commit
         context.commit('SAVE_TOKEN', res.data.key)
         alert('회원가입이 완료되었습니다!')
       })
@@ -97,11 +103,27 @@ export default new Vuex.Store({
         console.log(err)
       })
     },
-     logout(){
+    logout(){
       this.commit("DELETE_TOKEN")
       // commit("DELETE_TOKEN") 로그아웃 구현입니다.
       alert('성공적으로 로그아웃되었습니다!')
     },
+    // 프로필 구현
+    getProfile(context) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/accounts/profile/`,
+        headers: {
+          Authorization: `Token ${ context.state.token }`
+        }
+      })
+      .then((response) => {
+        context.commit('SET_PROFILE', response.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
   },
   modules: {
   }

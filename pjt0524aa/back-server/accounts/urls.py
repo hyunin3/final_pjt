@@ -1,7 +1,9 @@
-from django.urls import path
-from .views import SignupView
+from django.urls import path, include
+from .views import UserProfileView
 
+app_name = 'accounts'
 urlpatterns = [
-    path('signup/', SignupView.as_view(), name='signup'),
+    path('', include('dj_rest_auth.urls')),
+    path('signup/', include('dj_rest_auth.registration.urls')),
+    path('profile/', UserProfileView.as_view(), name='profile'),
 ]
- 

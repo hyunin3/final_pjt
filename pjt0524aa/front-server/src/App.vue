@@ -14,6 +14,7 @@
         <b-navbar-nav class="ml-auto">
           <b-nav-item v-if="!isLogin" :to="{ name: 'SignUpView' }">회원가입</b-nav-item>
           <b-nav-item v-if="!isLogin" :to="{ name: 'LogInView' }">로그인</b-nav-item>
+          <b-nav-item v-if="isLogin" :to="{ name: 'ProfileView' }">프로필</b-nav-item>
           <b-button v-if="isLogin" type="button" class="logoutButton" @click="logout">LogOut</b-button>
         </b-navbar-nav>
       </b-collapse>

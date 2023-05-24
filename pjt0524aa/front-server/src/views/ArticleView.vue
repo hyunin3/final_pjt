@@ -3,6 +3,7 @@
     <h1>HOME</h1>
     <router-link :to="{ name: 'CreateView' }">[CREATE]</router-link>
     <img height="60%" :src="seaImage" alt="Sea Image" id="bgimage">
+    <img src="@/assets/히오스 빙글빙글.gif" alt="Description">
     <ArticleList />
     <hr>
   </div>
