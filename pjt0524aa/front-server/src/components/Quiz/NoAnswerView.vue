@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import PopularMovies from '../components/Movies/PopularMovies.vue'
+import PopularMovies from '../Movies/PopularMovies.vue'
 
 export default {
   name: 'FailureQuizView',

@@ -10,10 +10,13 @@ import CreateView from '@/views/CreateView'
 import DetailView from '@/views/DetailView'
 import SignUpView from '@/views/SignUpView'
 import LogInView from '@/views/LogInView'
-import SuccessQuiz from '@/components/SuccessQuiz.vue'
-import FailureQuiz from '@/components/FailureQuiz.vue'
+import FourAnswerView from '@/components/Quiz/FourAnswerView.vue'
+import ThreeAnswerView from '@/components/Quiz/ThreeAnswerView.vue'
+import TwoAnswerView from '@/components/Quiz/TwoAnswerView.vue'
+import OneAnswerView from '@/components/Quiz/OneAnswerView.vue'
+import NoAnswerView from '@/components/Quiz/NoAnswerView.vue'
 import RecommendDetailView  from '@/components/Movies/RecommendDetailView.vue'
-
+import ProfileView from '@/views/ProfileView'
 
 Vue.use(VueRouter)
 
@@ -81,20 +84,45 @@ const routes = [
   },
   // 퀴즈 결과에 따른 라우터
   {
-    path: '/success',
-    name: 'SuccessQuiz',
-    component: SuccessQuiz,
+    path: '/fouranswer',
+    name: 'FourAnswerView',
+    component: FourAnswerView,
   },
+
   {
-    path: '/failure',
-    name: 'FailureQuiz',
-    component: FailureQuiz,
+    path: '/threeanswer',
+    name: 'ThreeAnswerView',
+    component: ThreeAnswerView,
+  },
+
+  {
+    path: '/twoanswer',
+    name: 'TwoAnswerView',
+    component: TwoAnswerView,
+  },
+
+  {
+    path: '/oneanswer',
+    name: 'OneAnswerView',
+    component: OneAnswerView,
+  },
+
+  {
+    path: '/noanswer',
+    name: 'NoAnswerView',
+    component: NoAnswerView,
   },
   // 추천 페이지 개별 영화 이동
   {
     path: '/recommend/:id',
     name: 'RecommendDetailView',
     component: RecommendDetailView 
+  },
+    // 프로필
+  {
+    path: '/profile/',
+    name: 'ProfileView',
+    component: ProfileView
   },
 
 ]
