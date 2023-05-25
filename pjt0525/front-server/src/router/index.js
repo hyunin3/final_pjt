@@ -17,6 +17,7 @@ import OneAnswerView from '@/components/Quiz/OneAnswerView.vue'
 import NoAnswerView from '@/components/Quiz/NoAnswerView.vue'
 import RecommendDetailView  from '@/components/Movies/RecommendDetailView.vue'
 import ProfileView from '@/views/ProfileView'
+import YouTubeMovies from '@/components/Movies/YouTubeMovies.vue'
 
 Vue.use(VueRouter)
 
@@ -123,6 +124,11 @@ const routes = [
     path: '/profile/',
     name: 'ProfileView',
     component: ProfileView
+  },
+  {
+    path: '/youtube/',
+    name: 'YouTubeMovies',
+    component: YouTubeMovies
   },
 
 ]

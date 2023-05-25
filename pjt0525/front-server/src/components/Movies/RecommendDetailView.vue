@@ -6,8 +6,9 @@
       <h4 class="mb-2">줄거리: {{ movie.overview }}</h4>
       <h4 class="mb-2">개봉일: {{ movie.released_date }}</h4>
       <h4 class="mb-2">평점: {{ movie.vote_avg }}</h4>
-      
       <img :src="imgUrl" alt="">
+      <h4>예고편</h4>
+      <YouTubeMovies/>
     </b-card>
     
     <b-card title="댓글 작성" class="mb-2">
@@ -36,9 +37,13 @@
 <script>
 import axios from 'axios';
 import lodash from 'lodash'
+import YouTubeMovies from '@/components/Movies/YouTubeMovies.vue'
 const IMG_URL = 'https://image.tmdb.org/t/p/w300';
 
 export default {
+  components: {
+    YouTubeMovies
+  },
   data() {
     return {
       movie: null,

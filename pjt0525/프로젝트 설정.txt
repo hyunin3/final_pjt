@@ -38,3 +38,5 @@ python manage.py runserver
 
 npm run serve
 
+유튜브 예고편 url양식은 https://youtu.be/4Oky0NapIB4 이런 형태로 되어있음
+
