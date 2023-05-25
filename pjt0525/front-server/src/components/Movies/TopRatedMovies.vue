@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-3">
     <div class="row">
-      <carousel :perPage="7" :navigationEnabled="true" :paginationEnabled="false" :loop="true" :autoplay="true" :autoplaySpeed="3000">
+      <carousel :perPage="7" :navigationEnabled="true" :paginationEnabled="false" :loop="true" :autoplay="true" :autoplaySpeed="5000">
         <slide v-for="movie in movies" :key="movie.id">
           <div class="card mb-2">
             <router-link :to="`/movie/${movie.id}`">

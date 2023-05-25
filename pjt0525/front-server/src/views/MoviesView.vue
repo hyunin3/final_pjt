@@ -1,7 +1,9 @@
 <template>
   <div class="scroll-container">
     <b-card title="환영합니다" class="mb-2 text-muted">
-      <h1 class="mb-2">퀴즈를 풀고 나에게 맞는 영화를 추천받으세요!</h1>
+      <h1 class="mb-2">어떤 영화가 있는지 우리 함께 둘러볼까요?</h1>
+      <img class="resized" src="@/assets/필름이미지.png" alt="필름">
+      <img class="resized" src="@/assets/프로젝터.png" alt="프로젝터">
     </b-card>
     <h4>현재상영작</h4>
     <NowPlayingMovies/>

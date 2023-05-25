@@ -1,6 +1,9 @@
 <template>
   <div class="quiz-container">
     <h1>영화 퀴즈</h1>
+    <b-card title="반가워요" class="mb-2 text-muted">
+      <h1 class="mb-2">퀴즈를 풀어보세요! 당신에게 맞는 영화를 추천해드릴게요!</h1>
+    </b-card>
     <div v-if="!quizStarted">
       <button @click="startQuiz" class="btn btn-primary">퀴즈 시작</button>
     </div>
